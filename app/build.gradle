@@ -31,6 +31,13 @@ android {
         jvmTarget = '1.8'
     }
     apply plugin: 'kotlin-android-extensions'
+    sourceSets {
+        main {
+            assets {
+                srcDirs 'src\\main\\assets'
+            }
+        }
+    }
 }
 
 dependencies {

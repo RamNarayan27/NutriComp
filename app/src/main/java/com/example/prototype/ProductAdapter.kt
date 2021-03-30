@@ -1,5 +1,6 @@
 package com.example.prototype
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import org.w3c.dom.Text
 
-class ProductAdapter(val products: ArrayList<ProductModel>) : RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
+class ProductAdapter(val products: MutableList<ProductModel>) : RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
         val productName: TextView = view.findViewById(R.id.product_name)
@@ -22,7 +23,7 @@ class ProductAdapter(val products: ArrayList<ProductModel>) : RecyclerView.Adapt
         val mfa: TextView = view.findViewById(R.id.mfa)
         val pfa: TextView = view.findViewById(R.id.pfa)
         val tfa: TextView = view.findViewById(R.id.tfa)
-        val cholestrol: TextView = view.findViewById(R.id.cholestrol)
+        val cholesterol: TextView = view.findViewById(R.id.cholestrol)
         val iron: TextView = view.findViewById(R.id.iron)
         val vitb1: TextView = view.findViewById(R.id.vitb1)
         val sodium: TextView = view.findViewById(R.id.sodium)
@@ -33,6 +34,7 @@ class ProductAdapter(val products: ArrayList<ProductModel>) : RecyclerView.Adapt
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.layout_product, parent, false)
+        Log.i("test",products.size.toString())
         return ViewHolder(view)
     }
 
@@ -49,7 +51,7 @@ class ProductAdapter(val products: ArrayList<ProductModel>) : RecyclerView.Adapt
         holder.mfa.text = products[position].mfa
         holder.pfa.text = products[position].pfa
         holder.tfa.text = products[position].tfa
-        holder.cholestrol.text = products[position].cholestrol
+        holder.cholesterol.text = products[position].cholestrol
         holder.iron.text = products[position].iron
         holder.vitb1.text = products[position].vitb1
         holder.sodium.text = products[position].sodium
@@ -58,8 +60,6 @@ class ProductAdapter(val products: ArrayList<ProductModel>) : RecyclerView.Adapt
         holder.vita.text = products[position].vita
     }
 
-    override fun getItemCount(): Int {
-        return products.size
-    }
+    override fun getItemCount(): Int = products.size
 
 }
